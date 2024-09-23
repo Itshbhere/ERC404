@@ -16,7 +16,7 @@ module.exports = {
     // Sepolia Testnet configuration
     sepolia: {
       url: `https://eth-sepolia.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`, // Alchemy Sepolia RPC URL
-      accounts: [`0x${process.env.PRIVATE_KEY}`], // Use the private key from .env
+      accounts: [process.env.SEPOLIA_PRIVATE_KEY_1], // Use the private key from .env
       chainId: 11155111, // Chain ID for Sepolia
     },
   },
