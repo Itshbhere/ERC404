@@ -1,5 +1,6 @@
-require("@nomiclabs/hardhat-ethers");
+// require("@nomiclabs/hardhat-ethers");
 require("dotenv").config(); // Load environment variables from .env file
+import "@nomiclabs/hardhat-ethers";
 
 module.exports = {
   solidity: "0.8.0",
