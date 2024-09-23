@@ -1,6 +1,4 @@
-// deploy.ts
 import { ethers } from "hardhat";
-import { ERC404Example } from "../contracts/examples/ERC404Example.sol"; // Adjust the path according to your typechain setup
 
 async function main() {
     const [deployer] = await ethers.getSigners();
@@ -14,8 +12,8 @@ async function main() {
     const symbol: string = "DTG";
     const decimals: number = 18;
     const maxTotalSupplyERC721: number = 1000;
-    const initialOwner: string = deployer.address; // Setting deployer as the initial owner
-    const initialMintRecipient: string = deployer.address; // Setting deployer as the mint recipient
+    const initialOwner: string = deployer.address;
+    const initialMintRecipient: string = deployer.address;
 
     // Deploy the contract
     const contract = await ERC404ExampleFactory.deploy(
@@ -25,11 +23,12 @@ async function main() {
         maxTotalSupplyERC721,
         initialOwner,
         initialMintRecipient
-    ) as ERC404Example; // Cast to the specific contract type
+    );
 
-    await contract.deployed(); // This should now work
+    // Wait for the contract to be deployed
+    await contract.waitForDeployment();
 
-    console.log("Contract deployed to:", contract.address);
+    console.log("Contract deployed to:", await contract.getAddress());
 }
 
 main()
